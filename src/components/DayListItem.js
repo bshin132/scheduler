@@ -13,10 +13,9 @@ const formatSpots = (spots) => {
   return `${spots} spots remaining`;
 };
 
-
 export default function DayListItem(props) {
   const { name, spots, setDay, selected } = props;
-  const message = formatSpots(spots)
+  const message = formatSpots(spots);
   let dayClass = classNames("day-list__item", {
     "day-list__item--selected": selected,
     "day-list__item--full": !spots,
