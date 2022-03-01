@@ -35,9 +35,8 @@ export default function Application(props) {
       }));
     });
   });
-
+  
   function bookInterview(id, interview) {
-    console.log("Book Interview", id, interview);
     const appointment = {
       ...state.appointments[id],
       interview: { ...interview },
@@ -50,8 +49,31 @@ export default function Application(props) {
       ...state,
       appointments,
     });
-    return axios.put(`/api/appointments/${id}`, {interview});
+    return axios.put(`/api/appointments/${id}`, { interview });
   }
+
+  function cancelInterview(id, interview) {
+    const appointment = {
+      ...state.appointments[id],
+      interview: null,
+    };
+    const appointments = {
+      ...state.appointments,
+      [id]: appointment,
+    };
+    const foundDay = state.days.find((day) => day.appointments.includes(id));
+    const days = state.days.map((day, index) => {
+      if (day.name === foundDay.name) {
+        return { ...day, spots: day.spots + 1 };
+      } else {
+        return day;
+      }
+    });
+    return axios.delete(`/api/appointments/${id}`, appointment).then(() => {
+      setState({ ...state, appointments, days });
+    });
+  }
+
 
   const dailyAppointments = getAppointmentsForDay(state, state.day);
   const interviewers = getInterviewersForDay(state, state.day);
@@ -66,6 +88,7 @@ export default function Application(props) {
         interview={interview}
         interviewers={interviewers}
         bookInterview={bookInterview}
+        cancelInterview={cancelInterview}
       />
     );
   });
