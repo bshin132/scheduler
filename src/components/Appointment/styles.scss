@@ -102,18 +102,12 @@ $appointment-height: 11rem;
     }
   }
 
-  &:last-of-type &__add,
-  &:last-of-type &__card {
-    display: none;
-  }
-
   &__actions {
     margin-top: 1rem;
 
     &-button {
       @include button-inactive--opacity;
       margin-right: 0.5rem;
-      display: none;
 
       &:hover {
         @include button-active--opacity;

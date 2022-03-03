@@ -26,7 +26,9 @@ export default function useApplicationData() {
         days: all[2].data,
       }));
     });
-  });
+  }
+  , []
+  );
 
   function bookInterview(id, interview) {
     const appointment = {
