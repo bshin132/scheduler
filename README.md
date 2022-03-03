@@ -21,3 +21,9 @@ npm test
 ```sh
 npm run storybook
 ```
+
+## Screenshots
+
+!["Main Page"](https://github.com/bshin132/scheduler/blob/master/docs/main.png?raw=true)
+!["Delete Appointment"](https://github.com/bshin132/scheduler/blob/master/docs/delete.png?raw=true)
+!["Create Appointment"](https://github.com/bshin132/scheduler/blob/master/docs/appointment.png?raw=true)
