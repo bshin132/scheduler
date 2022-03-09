@@ -57,6 +57,7 @@ export default function Appointment(props) {
     transition(EDIT);
   }
 
+  //INDEX COMP
   return (
     <article className="appointment">
       <Header time={props.time} />
