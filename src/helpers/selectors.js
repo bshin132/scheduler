@@ -1,3 +1,4 @@
+//GET APPOINTMENTS FOR DAY
 function getAppointmentsForDay(state, day) {
   const answer = [];
   for (const element of state.days) {
@@ -12,6 +13,7 @@ function getAppointmentsForDay(state, day) {
   return answer;
 }
 
+//GET INTERVIEW
 function getInterview(state, interview) {
   if (!interview) {
     return null;
@@ -24,6 +26,7 @@ function getInterview(state, interview) {
   };
 }
 
+//GET INTERVIEWERS FOR DAY
 function getInterviewersForDay(state, day) {
     const interviewer = [];
     for (const element of state.days) {

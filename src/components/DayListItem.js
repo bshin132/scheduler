@@ -3,6 +3,7 @@ import classNames from "classnames";
 
 import "components/DayListItem.scss";
 
+//REMAINING SPOTS FOR EACH DAYS
 const formatSpots = (spots) => {
   if (!spots) {
     return `no spots remaining`;
@@ -13,6 +14,7 @@ const formatSpots = (spots) => {
   return `${spots} spots remaining`;
 };
 
+//CLASSNAMES
 export default function DayListItem(props) {
   const { name, spots, setDay, selected } = props;
   const message = formatSpots(spots);

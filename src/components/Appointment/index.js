@@ -10,6 +10,7 @@ import Confirm from "./Confirm";
 import Error from "./Error";
 
 export default function Appointment(props) {
+  //DIFFERENT MODES ASSIGNED TO VARIABLES
   const EMPTY = "EMPTY";
   const SHOW = "SHOW";
   const CREATE = "CREATE";
@@ -24,6 +25,7 @@ export default function Appointment(props) {
     props.interview ? SHOW : EMPTY
   );
 
+  //SAVE APPOINTMENT 
   function save(name, interviewer) {
     const interview = {
       student: name,
@@ -36,6 +38,7 @@ export default function Appointment(props) {
       .catch(() => transition(ERROR_SAVE, true));
   }
 
+  //DELETE APPOINTMENT
   function deleteAppointment() {
     transition(DELETEING, true);
     props
@@ -44,10 +47,12 @@ export default function Appointment(props) {
       .catch(() => transition(ERROR_DELETE, true));
   }
 
+  //TRANSITION FOR CANCEL
   function deleteConfirmation() {
     transition(CANCEL);
   }
 
+  //TRANSITION FOR EDIT
   function editAppointment() {
     transition(EDIT);
   }
