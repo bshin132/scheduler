@@ -43,7 +43,26 @@ export default function useApplicationData() {
       ...state,
       appointments,
     });
-    return axios.put(`/api/appointments/${id}`, { interview });
+
+    const foundDay = state.days.find((day) => day.appointments.includes(id));
+    // Dynamically updating spots by removing one on selected day (while booking new appt)
+    const days = state.days.map((day) => {
+      if (
+        day.name === foundDay.name &&
+        !state.appointments[id].interview
+      ) {
+        return { ...day, spots: day.spots - 1 };
+      } else {
+        return day;
+      }
+    });
+    return axios.put(`/api/appointments/${id}`, appointment).then(() => {
+      setState({
+        ...state,
+        appointments,
+        days,
+      });
+    });
   }
 
   function cancelInterview(id, interview) {
